@@ -1,3 +1,5 @@
+name: Hello World
+run-name: Hello World ${{ github.actor }}
 on: [push]
 
 jobs:
