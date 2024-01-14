@@ -10,7 +10,7 @@ inputs:
 outputs:
   random-number:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    value: ${{ steps.random-number-generator.outputs.random-number }} # steps.{id}.outputs.対象の値
 runs:
   using: "composite"
   steps:
