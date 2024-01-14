@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: "クイックスタートの実行"
 run-name: "${{ github.actor }} がGithub Actionsを実行しました 🚀"
 on: [push]
 jobs:
