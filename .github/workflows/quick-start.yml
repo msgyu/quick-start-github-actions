@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: "${{ github.actor }} が試しにGithub Actionsを実行しました 🚀"
+run-name: "${{ github.actor }} がGithub Actionsを実行しました 🚀"
 on: [push]
 jobs:
   Explore-GitHub-Actions:
