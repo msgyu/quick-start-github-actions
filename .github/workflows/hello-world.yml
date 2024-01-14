@@ -11,6 +11,6 @@ jobs:
       - id: foo
         uses: ./.github/actions/hello-world
         with:
-          who-to-greet: "Hello World ${{ github.actor }}"
+          who-to-greet: "${{ github.actor }}"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
