@@ -1,4 +1,4 @@
-name: "試しにNode.jsをsetupしてみる"
+name: "Node.jsをsetupしてみる"
 run-name: "${{ github.actor }} はGithub Actionsを学ぶ"
 on: [push]
 jobs:
