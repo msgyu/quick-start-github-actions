@@ -10,13 +10,13 @@ inputs:
 outputs:
   random-number:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }} # steps.{id}.outputs.対象の値
+    value: ${{ steps.random-number-generator.outputs.random-number }} # steps.{id}.outputs.対象の値　stepsで定義した値を指定する
 runs:
   using: "composite"
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: random-number-generator
+    - id: random-number-generator #値取得のためにidを指定
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH # 後続のステップでそのディレクトリ内のスクリプトや実行可能ファイルに簡単にアクセスできるようにする。

@@ -8,9 +8,9 @@ jobs:
     name: "挨拶をする"
     steps:
       - uses: actions/checkout@v4
-      - id: foo
+      - id: hello
         uses: ./.github/actions/hello-world
         with:
           who-to-greet: "${{ github.actor }}"
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+      - run: echo random-number ${{ steps.hello.outputs.random-number }} # steps.{id}.outputs.取得したい値
         shell: bash
