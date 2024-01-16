@@ -10,4 +10,5 @@ jobs:
           echo "DB_HOST = ${{ secrets.DB_HOST }}"
           touch .env
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
+          echo ".envを表示します"
           cat .env
