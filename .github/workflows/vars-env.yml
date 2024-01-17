@@ -1,0 +1,18 @@
+name: "varsとenvを試す"
+run-name: "${{ github.actor }} がvarsとenvを学習しました 🚀"
+on: [workflow_dispatch]
+env:
+  DAY_OF_WEEK: "月曜日"
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: "いい天気"
+    steps:
+      - name: "envから値を取得"
+        env:
+          Last_name: "松本"
+        run: |
+          echo "こんにちは、${{ env.Last_name }}さん"
+          echo "こんにちは、${{ env.Greeting }}さん"
+          echo "今日は${{ env.DAY_OF_WEEK }}ですね。今週も頑張りましょう！"

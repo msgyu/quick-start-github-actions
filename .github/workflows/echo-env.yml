@@ -6,7 +6,8 @@ jobs:
     name: "🔧 .envの値をセットする"
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - id: set-env
+        run: |
           echo "DB_HOST = ${{ secrets.DB_HOST }}"
           touch .env
           echo DB_HOST =${{ secrets.DB_HOST }} >> .env
