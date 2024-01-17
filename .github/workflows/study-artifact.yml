@@ -10,10 +10,11 @@ jobs:
       - shell: bash
         run: |
           expr 1 + 1 > output.log
+          echo $(( 1 + 1 )) > output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
-          name: output-log-file 
+          name: output-log-file
           path: output.log
   download-artifact:
     needs: upload-artifact # upload-artifactが終わってから実行
