@@ -1,0 +1,17 @@
+name: "artifactを学習する"
+run-name: "artifactを学習するよ"
+on: [push]
+jobs:
+  study-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          expr 1 + 1 > output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
