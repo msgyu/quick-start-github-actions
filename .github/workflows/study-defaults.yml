@@ -1,0 +1,13 @@
+name: "defaultsを使ってみた"
+run-name: "${{ github.actor }} がdefaultsを使ってみた"
+on: [push]
+jobs:
+  study-defaults:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ../../scripts
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Script
+        run: ./echo.sh
