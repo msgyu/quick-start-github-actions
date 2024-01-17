@@ -14,5 +14,5 @@ jobs:
           Last_name: "松本"
         run: |
           echo "こんにちは、${{ env.Last_name }}さん"
-          echo "こんにちは、今日は${{ env.Greeting }}だね"
+          echo "こんにちは、今日は${{ Greeting }}だね"
           echo "${{ env.DAY_OF_WEEK }}の予定はいかがですか？"
