@@ -1,4 +1,4 @@
-name: "artifactを学習する"
+name: "artifactを学習する" # @see https://docs.github.com/ja/actions/learn-github-actions/essential-features-of-github-actions
 run-name: "artifactを学習するよ"
 on: [push]
 jobs:
@@ -12,16 +12,64 @@ jobs:
           expr 1 + 1 > output.log
           echo $(( 1 + 1 )) > output.log
       - name: Upload output file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3 # artifactの詳細についは次を確認してください。 @see https://docs.github.com/ja/actions/using-workflows/storing-workflow-data-as-artifacts
         with:
-          name: output-log-file
-          path: output.log
+          name: output-log-file # 名前を指定
+          path: output.log # Githubからダウンロードするには次のリンクを確認してください。https://docs.github.com/ja/actions/managing-workflow-runs/downloading-workflow-artifacts
+          retention-days: 5 # 5日間保存
   download-artifact:
+    # ファイルのダウンロード: アップロードされたアーティファクトをダウンロードできるのは、同じワークフローの実行中だけです。 ファイルをダウンロードする際には、名前で参照できます。
     needs: upload-artifact # upload-artifactが終わってから実行
     runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
-          name: output-log-file
+          name: output-log-file # 名前を指定
       - run: cat output.log
+  job_1:
+    name: "JOB_1:Add 3 and 7"
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: homework # 名前を指定
+          path: math-homework.txt
+
+  job_2:
+    name: "JOB_2:掛け算 by 9"
+    needs: job_1
+    runs-on: windows-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v3
+        with:
+          name: homework # job_1で指定した名前をダウンロード
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          expr $value \* 9 > math-homework.txt
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v3
+        with:
+          name: homework
+          path: math-homework.txt
+
+  job_3:
+    name: Display results
+    needs: job_2
+    runs-on: macOS-latest
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v3
+        with:
+          name: homework # job_1で指定した名前をダウンロード
+      - name: Print the final result
+        shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          echo The result is $value
