@@ -1,9 +1,14 @@
 name: "defaultsを使ってみた"
 run-name: "${{ github.actor }} がdefaultsを使ってみた"
 on: [push]
+# ワークフロー全体でデフォルトを指定する
+defaults:
+  run:
+    working-directory: ./scripts #ルートディレクトリから指定する
 jobs:
   study-defaults:
     runs-on: ubuntu-latest
+    # ジョブでデフォルトを指定する
     defaults:
       run:
         working-directory: ./scripts #ルートディレクトリから指定する
