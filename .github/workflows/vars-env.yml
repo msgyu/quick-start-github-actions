@@ -1,15 +1,24 @@
 name: "varsとenvを試す"
 run-name: "${{ github.actor }} がvarsとenvを学習しました 🚀"
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      print_tags:
+        description: "タグを表示しますか？"
+        required: true
+        type: boolean
+# ワークフロー全体で有効な変数を定義します。
 env:
   DAY_OF_WEEK: "月曜日"
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
+    # JOB内でのみ有効な変数を定義します。
     env:
       Greeting: "いい天気"
     steps:
       - name: "envから値を取得"
+        # Step内でのみ有効な環境変数を定義します。
         env:
           Last_name: "松本"
         run: |
