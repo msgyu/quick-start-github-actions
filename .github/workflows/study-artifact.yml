@@ -13,13 +13,14 @@ jobs:
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
-          name: output-log-file
+          name: output-log-file 
           path: output.log
   download-artifact:
-    needs: upload-artifact
+    needs: upload-artifact # upload-artifactが終わってから実行
     runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: output-log-file
+      - run: cat output.log
