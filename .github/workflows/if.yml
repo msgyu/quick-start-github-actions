@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: echo true
   if-boolean-true:
+    # 式構文 ${{ }} を使用すると、内容が文字列に変わり、文字列は真値です。
     if: true && ${{ false }}
     runs-on: ubuntu-latest
     steps:
