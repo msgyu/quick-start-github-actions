@@ -68,5 +68,5 @@ jobs:
             echo "Fruit: $name, Quantity: $quantity"
           done
         shell: bash
-      - run: echo ${{ env.fruits.*.name }}
-      - run: echo ${{ contains(env.fruits.*.name, 'apple') }}
+      - run: echo ${{ toJson(env.fruits.*.name) }}
+      - run: echo ${{ contains(fromJson(env.fruits.*.name), 'apple') }} # fromJSONを利用しないと失敗する
