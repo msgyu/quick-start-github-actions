@@ -1,0 +1,14 @@
+name: "自動トークン認証"
+run-name: "${{github.actor}}が自動トークン認証を学習しています"
+on: [pull_request_target, push]
+jobs:
+  auto-token-authentication:
+    name: "自動トークン認証"
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
