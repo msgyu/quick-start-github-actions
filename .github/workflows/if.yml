@@ -39,3 +39,12 @@ jobs:
       - run: echo ` ${{ contains(github.event.issue.labels.*.name, 'bug') }}`
       - run: echo  `eventはpushまたはpull_requestですか${{ contains(fromJSON('["push", "pull_request"]'), github.event_name)}}` # github.event_name == "push" || github.event_name == "pull_request"とは別の表現
       - run: echo `toJSON中身を確認する。 ${{ toJSON(github.event) }}`
+  study-fromJSON:
+    runs-on: ubuntu-latest
+    env:
+      continue: true
+      time: 3
+    steps:
+      - continue-on-error: ${{ fromJSON(env.continue) }} # ステップが失敗したときにジョブが失敗するのを防ぎます。このステップが失敗した場合にジョブを通過できるようにするには、trueに設定します。
+        timeout-minutes: ${{ fromJSON(env.time) }}
+        run: echo ...
