@@ -26,6 +26,8 @@ jobs:
       - run: echo true
   ternary-operator:
     env:
+      # 三項演算子を使用すると、簡単に条件分岐ができます。 @see https://docs.github.com/ja/actions/learn-github-actions/expressions
+      # 条件 && 真値 || 偽値
       MY_ENV_VAR: ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }}
     runs-on: ubuntu-latest
     steps:
