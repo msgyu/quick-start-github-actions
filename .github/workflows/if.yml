@@ -61,8 +61,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Use Fruits Array
         run: |
-          echo ${{ env.fruits.*.name }}
-          echo ${{ contains(env.fruits.*.name, 'apple') }}
           fruits_json='${{ env.fruits }}'
           for row in $(echo "${fruits_json}" | jq -c '.[]'); do
             name=$(echo $row | jq -r '.name')
@@ -70,3 +68,5 @@ jobs:
             echo "Fruit: $name, Quantity: $quantity"
           done
         shell: bash
+      - run: echo ${{ env.fruits.*.name }}
+      - run: echo ${{ contains(env.fruits.*.name, 'apple') }}
