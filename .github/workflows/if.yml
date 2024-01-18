@@ -49,6 +49,24 @@ jobs:
         timeout-minutes: ${{ fromJSON(env.time) }}
         run: echo ...
       - run: echo ${{ env.continue }}
-      - run: echo ${{ fromJSON(env.continue) }}
+      - run: echo ${{ fromJSON(env.continue) }} # 環境変数を文字列からブール値もしくは整数に変換します。
       - run: echo ${{ env.time }}
-      - run: echo ${{ fromJson(env.time) }}
+      - run: echo ${{ fromJson(env.time) }} # 環境変数を文字列からブール値もしくは整数に変換します。
+  study-array:
+    runs-on: ubuntu-latest
+    env:
+      fruits: '[{ "name": "apple", "quantity": 1 }, { "name": "orange", "quantity": 2 }, { "name": "pear", "quantity": 1 }]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Fruits Array
+        run: |
+          echo ${{ env.fruits.*.name }}
+          echo ${{ contains(env.fruits.*.name, 'apple') }}
+          fruits_json='${{ env.fruits }}'
+          for row in $(echo "${fruits_json}" | jq -c '.[]'); do
+            name=$(echo $row | jq -r '.name')
+            quantity=$(echo $row | jq -r '.quantity')
+            echo "Fruit: $name, Quantity: $quantity"
+          done
+        shell: bash
