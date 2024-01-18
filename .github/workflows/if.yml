@@ -1,0 +1,13 @@
+name: "式について学習する"
+run-name: "${{ github.actor }} はif文を学習しました"
+on: [push]
+jobs:
+  if-study:
+    if: github.repository == 'msgyu/quick-start-github-actions'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - run: npm install -g bats
