@@ -38,4 +38,4 @@ jobs:
       - run: echo `lloはhellow worldに含まれますか？ ${{ contains('Hello world', 'llo') }}`
       - run: echo ` ${{ contains(github.event.issue.labels.*.name, 'bug') }}`
       - run: echo  `eventはpushまたはpull_requestですか${{ contains(fromJSON('["push", "pull_request"]'), github.event_name)}}` # github.event_name == "push" || github.event_name == "pull_request"とは別の表現
-      - run: echo `toJSON中身を確認する。 ${{ toJSON(github) }}`
+      - run: echo `toJSON中身を確認する。 ${{ toJSON(github.event) }}`
