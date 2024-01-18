@@ -32,3 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo $MY_ENV_VAR
+  study-contains-string:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo `lloはhellow worldに含まれますか？ ${{ contains('Hello world', 'llo') }}`
+      - run: echo ` ${{ contains(github.event.issue.labels.*.name, 'bug') }}`
+      - run: echo  `eventはpushまたはpull_requestですか${{ contains(fromJSON('["push", "pull_request"]'), github.event_name)}}` # github.event_name == "push" || github.event_name == "pull_request"とは別の表現
