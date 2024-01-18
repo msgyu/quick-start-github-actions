@@ -24,3 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo true
+  ternary-operator:
+    env:
+      MY_ENV_VAR: ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $MY_ENV_VAR
