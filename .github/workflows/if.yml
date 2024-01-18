@@ -1,4 +1,4 @@
-name: "式について学習する"
+name: "if文について学習する"
 run-name: "${{ github.actor }} はif文を学習しました"
 on: [push]
 jobs:
@@ -11,3 +11,15 @@ jobs:
         with:
           node-version: "14"
       - run: npm install -g bats
+  if-boolean-false:
+    if: true && false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo true
+  if-boolean-true:
+    if: true && ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo true
