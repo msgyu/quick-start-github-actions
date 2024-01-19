@@ -1,6 +1,6 @@
 name: "自動トークン認証"
 run-name: "${{github.actor}}が自動トークン認証を学習しています"
-on: [pull_request_target, push]
+on: [pull_request_target]
 jobs:
   auto-token-authentication:
     name: "自動トークン認証"
