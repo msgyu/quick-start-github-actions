@@ -3,7 +3,7 @@ run-name: "${{github.actor}}が自動トークン認証を学習しています"
 on: [pull_request_target]
 jobs:
   auto-token-authentication:
-    name: "自動トークン認証"
+    name: "自動トークン認証して、ラベルを付与する"
     permissions:
       contents: read
       pull-requests: write
@@ -12,6 +12,7 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: ".github/labeler-try.yml"
   create_issue:
     runs-on: ubuntu-latest
     permissions:
