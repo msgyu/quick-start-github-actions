@@ -12,7 +12,7 @@ jobs:
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: ".github/labeler-try.yml"
+          configuration-path: ".github/labeler/labeler-try.yml"
   create_issue:
     runs-on: ubuntu-latest
     permissions:
