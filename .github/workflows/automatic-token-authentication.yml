@@ -1,3 +1,4 @@
+# 次の内容を実施 https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 name: "自動トークン認証"
 run-name: "${{github.actor}}が自動トークン認証を学習しています"
 on: [pull_request_target]
@@ -9,10 +10,11 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      # 自動ラベル付与 https://github.com/actions/labeler?tab=readme-ov-file
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: ".github/labeler/labeler-try.yml"
+          configuration-path: ".github/labeler/labeler-try.yml" # ラベル付与の設定ファイル
   create_issue:
     runs-on: ubuntu-latest
     permissions:
