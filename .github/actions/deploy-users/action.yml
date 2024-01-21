@@ -15,7 +15,7 @@ runs:
     - id: check-deploy-user
       env:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
-      if: ${{ contains(fromJSON(env.DEPLOY_USERS), 'llo') }}
+      if: ${{ contains(env.DEPLOY_USERS, 'llo') }}
       run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
 
 

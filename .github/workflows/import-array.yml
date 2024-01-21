@@ -8,9 +8,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: geti-deploy-users
         id: get-deploy-users
-        uses: ./.github/actions/deploy-users
-        with:
-          exe-user: ${{github.actor}}
+        env:
+          DEPLOY_USERS: '["user1", "user2", "user3", "msgyu"]'
+        if: ${{ contains(env.DEPLOY_USERS, github.actor) }}
+        run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
       - name: "対象のユーザーかどうかを結果を出力"
         run: |
           echo "is-deploy-user: ${{ steps.get-deploy-users.outputs.is-deploy-user }}"
