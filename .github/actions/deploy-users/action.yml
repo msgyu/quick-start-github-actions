@@ -18,7 +18,7 @@ runs:
       run: |
         echo Hello ${{ inputs.exe-user }}.
         echo exe-users: ${{ env.DEPLOY_USERS }}
-        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), fromJson(inputs.exe-user) }}"
+        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), fromJson(inputs.exe-user)) }}"
 
       shell: bash
     # - run: |
