@@ -14,5 +14,5 @@ jobs:
       - name: "対象のユーザーかどうかを結果を出力"
         run: echo "is-deploy-user is  ${{ steps.get-deploy-users.outputs.is-deploy-user }}"
       - name: "デプロイユーザーならデプロイする"
-        if: ${{ steps.get-deploy-users.outputs.is-deploy-user == true }}
+        if: ${{ steps.get-deploy-users.outputs.is-deploy-user == 'true' }}
         run: echo deploy!!
