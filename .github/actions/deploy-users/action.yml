@@ -15,12 +15,15 @@ runs:
     - id: check-deploy-user
       env:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
-      run: echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, msgyu }} }}" >> $GITHUB_OUTPUT
+      if: ${{ contains('Hello world', 'llo') }}
+      run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
+
 
       shell: bash
     # - run: |
       #   echo exe-user: ${{ inputs.is-deploy-user }}
       #   echo exe-user: ${{ env.DEPLOY_USERS }}
+      # run: echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, msgyu }} }}" >> $GITHUB_OUTPUT
       #   echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, inputs.exe-user }} }}" >> $GITHUB_OUTPUT
 
 
