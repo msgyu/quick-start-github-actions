@@ -13,4 +13,4 @@ jobs:
           exe-user: ${{github.actor}}
       - name: "対象のユーザーかどうかを結果を出力"
         run: |
-          echo "${{ steps.get-deploy-users.outputs.is-deploy-user }}"
+          echo "is-deploy-user: ${{ steps.get-deploy-users.outputs.is-deploy-user }}"
