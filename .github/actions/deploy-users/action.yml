@@ -16,9 +16,10 @@ runs:
       env:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
       run: |
-        echo Hello ${{ inputs.exe-user }}.
+        USER=${{ inputs.exe-user }}
+        echo $USER
         echo exe-users: ${{ env.DEPLOY_USERS }}
-        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), fromJson(github.event.inputs.exe-user)) }}"
+        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), $USER) }}"
 
       shell: bash
     # - run: |
