@@ -16,8 +16,7 @@ runs:
       env:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
       run: |
-        USER=${{ inputs.exe-user }}
-        echo "$USER"
+        echo ${{ inputs.exe-user }}
         echo exe-users: ${{ env.DEPLOY_USERS }}
 
       shell: bash
