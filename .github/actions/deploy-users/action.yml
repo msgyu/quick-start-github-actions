@@ -12,7 +12,7 @@ runs:
         DEPLOY_USERS: '["user1", "user2", "user3", "msgyu"]'
       run: echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, github.actor) }}" >> $GITHUB_OUTPUT
       shell: bash
-    # 下記は実行を試みたができないもの
+    # 下記はinputsで実行を試みたができなかった
     # - run: |
       #   echo exe-user: ${{ inputs.is-deploy-user }}
       #   echo exe-user: ${{ env.DEPLOY_USERS }}
