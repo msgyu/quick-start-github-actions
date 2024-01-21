@@ -17,8 +17,6 @@ runs:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
       if: ${{ contains(env.DEPLOY_USERS, 'llo') }}
       run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
-
-
       shell: bash
     # - run: |
       #   echo exe-user: ${{ inputs.is-deploy-user }}
