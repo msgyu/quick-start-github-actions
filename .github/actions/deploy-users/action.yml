@@ -19,12 +19,12 @@ runs:
         USER=${{ inputs.exe-user }}
         echo $USER
         echo exe-users: ${{ env.DEPLOY_USERS }}
-        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), $USER) }}"
 
       shell: bash
     # - run: |
       #   echo exe-user: ${{ inputs.is-deploy-user }}
       #   echo exe-user: ${{ env.DEPLOY_USERS }}
+      # echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), $USER) }}"
       #   echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), ${{ inputs.exe-user }} }} }}" >> $GITHUB_OUTPUT
 
 
