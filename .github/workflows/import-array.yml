@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: geti-deploy-users
+      - name: get-deploy-users
         id: get-deploy-users
         env:
           DEPLOY_USERS: '["user1", "user2", "user3", "msgyu"]'
