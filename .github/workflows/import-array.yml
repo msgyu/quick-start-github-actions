@@ -10,11 +10,9 @@ jobs:
         id: get-deploy-users
         env:
           DEPLOY_USERS: '["user1", "user2", "user3", "msgyu"]'
-        if: ${{ contains(env.DEPLOY_USERS, github.actor) }}
-        run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
+        run: echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, github.actor) }}" >> $GITHUB_OUTPUT
       - name: "対象のユーザーかどうかを結果を出力"
-        run: |
-          echo "is-deploy-user: ${{ steps.get-deploy-users.outputs.is-deploy-user }}"
+        run: echo "is-deploy-user is  ${{ steps.get-deploy-users.outputs.is-deploy-user }}"
       - name: "デプロイユーザーならデプロイする"
-        if: ${{ steps.get-deploy-users.outputs.is-deploy-user == 'true' }}
+        if: ${{ steps.get-deploy-users.outputs.is-deploy-user == true }}
         run: echo "deploy!!
