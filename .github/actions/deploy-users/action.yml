@@ -14,10 +14,10 @@ runs:
   steps:
     - id: check-deploy-user
       env:
-        DEPLOY_USERS: '["user1", "user2", "user3"]'
-      if: ${{ contains(env.DEPLOY_USERS, 'llo') }}
-      run: echo "is-deploy-user=true" >> $GITHUB_OUTPUT
+        DEPLOY_USERS: '["user1", "user2", "user3", "msgyu"]'
+      run: echo "is-deploy-user=${{ contains(env.DEPLOY_USERS, github.actor) }}" >> $GITHUB_OUTPUT
       shell: bash
+    # 下記は実行を試みたができないもの
     # - run: |
       #   echo exe-user: ${{ inputs.is-deploy-user }}
       #   echo exe-user: ${{ env.DEPLOY_USERS }}
