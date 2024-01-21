@@ -15,8 +15,8 @@ runs:
       env:
         DEPLOY_USERS: '["user1", "user2", "user3"]'
       run: |
-        echo 'exe-user: ${{ inputs.is-deploy-user }}'
-        echo 'exe-user: ${{ env.DEPLOY_USERS }}'
+        echo "exe-user: ${{ inputs.is-deploy-user }}"
+        echo "exe-user: ${{ env.DEPLOY_USERS }}""
         echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), inputs.exe-user }} }}"
         echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), inputs.exe-user }} }}" >> $GITHUB_OUTPUT
       shell: bash
