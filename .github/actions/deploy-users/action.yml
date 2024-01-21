@@ -1,10 +1,5 @@
 name: "デプロイ実行権限を持つUser"
 description: "デプロイ実行権限を持つUserを管理する"
-inputs:
-  exe-user:
-    description: "実行したユーザー"
-    required: true
-    default: 'World'
 outputs:
   is-deploy-user:
     description: "実行者がデプロイ権限をもつユーザーか判定する"
