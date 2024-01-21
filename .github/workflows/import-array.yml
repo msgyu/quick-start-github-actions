@@ -10,7 +10,7 @@ jobs:
         id: get-deploy-users
         uses: ./.github/actions/deploy-users
         with:
-          deploy-users: ${{github.actor}}
+          exe-user: ${{github.actor}}
       - name: "対象のユーザーかどうかを結果を出力"
         run: |
           echo "${{ steps.get-deploy-users.outputs.is-deploy-user }}"
