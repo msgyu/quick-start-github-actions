@@ -1,0 +1,24 @@
+name: "デプロイ実行権限を持つUser"
+description: "デプロイ実行権限を持つUserを管理する"
+inputs:
+  exe-user:
+    description: '実行者のユーザー'
+    required: true
+outputs:
+  is-deploy-user:
+    description: "実行者がデプロイ権限をもつユーザーか判定する"
+    value: ${{ steps.check-deploy-user.outputs.is-deploy-user }}
+runs:
+  using: composite
+  steps:
+    - id: check-deploy-user
+      env:
+        DEPLOY_USERS: '["user1", "user2", "user3"]'
+      run: |
+        echo 'exe-user: ${{ inputs.is-deploy-user }}'
+        echo 'exe-user: ${{ env.DEPLOY_USERS }}'
+        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), inputs.exe-user }} }}"
+        echo "is-deploy-user=${{ contains(fromJson(env.DEPLOY_USERS), inputs.exe-user }} }}" >> $GITHUB_OUTPUT
+      shell: bash
+
+

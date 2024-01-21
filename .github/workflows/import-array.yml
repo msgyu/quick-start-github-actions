@@ -1,0 +1,14 @@
+name: "他ファイルで定義された配列を取得する"
+run-name: "他ファイルで定義された配列を取得する"
+on: ["push"]
+jobs:
+  import-array:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: geti-deploy-users
+        id: get-deploy-users
+        uses: ./.github/actions/deploy-users
+      - name: "対象のユーザーかどうかを結果を出力"
+        run: |
+          echo "${{ steps.get-deploy-users.outputs.is-deploy-user }}"
