@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-jobs: # 変数はsecrets, vars, env, outputsで定義できる
+jobs: # 変数はsecrets, vars, github, runnner, env, outputsで定義されている
   job1:
     runs-on: ubuntu-latest
     # 他のJOBで参照できるようにGITHUB_OUTPUTを定義
